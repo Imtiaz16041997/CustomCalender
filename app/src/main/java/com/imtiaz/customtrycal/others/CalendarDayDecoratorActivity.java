@@ -15,7 +15,6 @@ import com.imtiaz.customtrycal.CalendarListener;
 import com.imtiaz.customtrycal.CalendarUtils;
 import com.imtiaz.customtrycal.CustomCalendarView;
 import com.imtiaz.customtrycal.DayDecorator;
-import com.imtiaz.customtrycal.DisabledColorDecorator;
 import com.imtiaz.customtrycal.R;
 
 import java.text.SimpleDateFormat;

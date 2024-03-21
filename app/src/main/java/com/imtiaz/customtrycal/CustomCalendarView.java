@@ -3,6 +3,7 @@ package com.imtiaz.customtrycal;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.TypedArray;
+import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Build;
 import android.util.AttributeSet;
@@ -54,7 +55,7 @@ public class CustomCalendarView extends LinearLayout {
 
     private int currentMonthIndex = 0;
     private boolean isOverflowDateVisible = true;
-
+    private int specificDateColor = Color.RED;
     public CustomCalendarView(Context mContext) {
         this(mContext, null);
     }
@@ -234,6 +235,11 @@ public class CustomCalendarView extends LinearLayout {
                     dayView.setVisibility(View.GONE);
                 }
             }
+
+            // Apply specific date coloring if necessary
+            if (isSpecificDateToColor(startCalendar.getTime())) {
+                dayView.setBackgroundColor(specificDateColor);
+            }
             dayView.decorate();
 
 
@@ -263,6 +269,8 @@ public class CustomCalendarView extends LinearLayout {
             dayView.decorate();
         }
     }
+
+
 
     private DayView getDayOfMonthText(Calendar currentCalendar) {
         return (DayView) getView(DAY_OF_MONTH_TEXT, currentCalendar);
@@ -400,6 +408,31 @@ public class CustomCalendarView extends LinearLayout {
                 calendarListener.onDateSelected(calendar.getTime());
         }
     };
+    public void setSpecificDatesColor(List<Date> dates, int color) {
+        for (Date date : dates) {
+            markDayWithColor(date, color);
+        }
+    }
+
+   /*
+   Specific Date
+   public void setSpecificDatesColor(Map<Date, Integer> dateColorMap) {
+        for (Map.Entry<Date, Integer> entry : dateColorMap.entrySet()) {
+            markDayWithColor(entry.getKey(), entry.getValue());
+        }
+    }*/
+
+    private boolean isSpecificDateToColor(Date date) {
+
+        return false;
+    }
+    private void markDayWithColor(Date date, int color) {
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(date);
+        DayView dayView = getDayOfMonthText(calendar);
+        dayView.setBackgroundColor(color);
+    }
+
 
     public List<DayDecorator> getDecorators() {
         return decorators;

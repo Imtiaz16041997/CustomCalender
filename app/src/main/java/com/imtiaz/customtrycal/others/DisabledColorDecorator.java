@@ -1,6 +1,10 @@
-package com.imtiaz.customtrycal;
+package com.imtiaz.customtrycal.others;
 
 import android.graphics.Color;
+
+import com.imtiaz.customtrycal.CalendarUtils;
+import com.imtiaz.customtrycal.DayDecorator;
+import com.imtiaz.customtrycal.DayView;
 
 public class DisabledColorDecorator implements DayDecorator {
     @Override

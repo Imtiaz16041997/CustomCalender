@@ -37,32 +37,13 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         listView.setOnItemClickListener(this);
     }
 
-/*    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        return true;
-    }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        if (item.getItemId() == R.id.action_about) {
-            Intent intent = new Intent(Intent.ACTION_VIEW);
-            intent.setData(Uri.parse("http://stacktips.com"));
-            startActivity(intent);
-        }
-        return super.onOptionsItemSelected(item);
-    }*/
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         final String selectedValue = listData[position];
         if (selectedValue.equals(getString(R.string.simple_calendar))) {
             startActivity(new Intent(this, SimpleCalendarActivity.class));
-        } /*else if (selectedValue.equals(getString(R.string.calendar_day_decorator))) {
-            startActivity(new Intent(this, CalendarDayDecoratorActivity.class));
-        } else if (selectedValue.equals(getString(R.string.customizing_custom_calendar))) {
-            startActivity(new Intent(this, CustomisedCalendarActivity.class));
-        }*/
+        }
     }
 }

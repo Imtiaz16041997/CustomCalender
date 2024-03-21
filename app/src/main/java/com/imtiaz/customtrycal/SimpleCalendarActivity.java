@@ -1,5 +1,6 @@
 package com.imtiaz.customtrycal;
 
+import android.graphics.Color;
 import android.os.Bundle;
 
 import android.view.MenuItem;
@@ -11,9 +12,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 import java.util.Objects;
 
 public class SimpleCalendarActivity extends AppCompatActivity {
@@ -43,6 +48,38 @@ public class SimpleCalendarActivity extends AppCompatActivity {
 
         //call refreshCalendar to update calendar the view
         calendarView.refreshCalendar(currentCalendar);
+
+
+
+
+/*
+ Specific date specific color
+// Create a map of specific dates and their corresponding colors
+        Map<Date, Integer> specificDateColorMap = new HashMap<>();
+// Create specific Date objects for your dates
+        Calendar calendar = Calendar.getInstance();
+        calendar.set(2024, Calendar.MARCH, 25); // Set the year, month, and day for your first specific date
+        Date firstSpecificDate = calendar.getTime();
+
+        calendar.set(2024, Calendar.APRIL, 10); // Set the year, month, and day for your second specific date
+        Date secondSpecificDate = calendar.getTime();
+
+// Add your specific dates and colors to the map
+        specificDateColorMap.put(firstSpecificDate, Color.GREEN); // Add first specific date with color green
+        specificDateColorMap.put(secondSpecificDate, Color.BLUE); // Add second specific date with color blue
+
+// Call the method to set specific dates and their colors
+        calendarView.setSpecificDatesColor(specificDateColorMap);*/
+
+        // Create a list of specific dates
+        List<Date> specificDates = new ArrayList<>();
+        // Add your specific dates to the list
+        // For example:
+         specificDates.add(new Date()); // Add specific date
+         //specificDates.add(anotherDate); // Add another specific date
+
+        // Call the method to color specific dates
+        calendarView.setSpecificDatesColor(specificDates, Color.RED);
 
         //Handling custom calendar events
         calendarView.setCalendarListener(new CalendarListener() {
