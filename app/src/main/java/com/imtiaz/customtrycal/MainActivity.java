@@ -44,6 +44,10 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         final String selectedValue = listData[position];
         if (selectedValue.equals(getString(R.string.simple_calendar))) {
             startActivity(new Intent(this, SimpleCalendarActivity.class));
-        }
+        }/*else if (selectedValue.equals(getString(R.string.calendar_day_decorator))) {
+            startActivity(new Intent(this, CalendarDayDecoratorActivity.class));
+        } else if (selectedValue.equals(getString(R.string.customizing_custom_calendar))) {
+            startActivity(new Intent(this, CustomisedCalendarActivity.class));
+        }*/
     }
 }

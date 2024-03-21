@@ -4,6 +4,7 @@ import android.graphics.Color;
 import android.os.Bundle;
 
 import android.view.MenuItem;
+import android.widget.TextView;
 import android.widget.Toast;
 
 
@@ -23,7 +24,7 @@ import java.util.Objects;
 
 public class SimpleCalendarActivity extends AppCompatActivity {
     CustomCalendarView calendarView;
-
+    private TextView selectedDateTv;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,7 +37,7 @@ public class SimpleCalendarActivity extends AppCompatActivity {
 
         //Initialize CustomCalendarView from layout
         calendarView = (CustomCalendarView) findViewById(R.id.calendar_view);
-
+        selectedDateTv = (TextView) findViewById(R.id.selected_date);
         //Initialize calendar with date
         Calendar currentCalendar = Calendar.getInstance(Locale.getDefault());
 
@@ -85,8 +86,12 @@ public class SimpleCalendarActivity extends AppCompatActivity {
         calendarView.setCalendarListener(new CalendarListener() {
             @Override
             public void onDateSelected(Date date) {
-                SimpleDateFormat df = new SimpleDateFormat("dd-MM-yyyy");
-                Toast.makeText(SimpleCalendarActivity.this, df.format(date), Toast.LENGTH_SHORT).show();
+                if (!CalendarUtils.isPastDay(date)) {
+                    SimpleDateFormat df = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault());
+                    selectedDateTv.setText(String.format("Selected date is %s" , df.format(date)));
+                } else {
+                    selectedDateTv.setText("Selected date is disabled!");
+                }
             }
 
             @Override

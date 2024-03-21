@@ -36,4 +36,13 @@
         app:selectedDayBackgroundColor="@color/blue"
         app:titleLayoutBackgroundColor="@color/white"
         app:weekLayoutBackgroundColor="@color/white"/>
+
+    <TextView
+        android:id="@+id/selected_date"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/padding"
+        android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+        android:textColor="@color/color_grey"
+        android:textStyle="bold"/>
 </LinearLayout>
