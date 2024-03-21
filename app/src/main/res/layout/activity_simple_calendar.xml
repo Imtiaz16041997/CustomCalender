@@ -45,4 +45,18 @@
         android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
         android:textColor="@color/color_grey"
         android:textStyle="bold"/>
+
+
+    <!-- FloatingActionButton Declaration -->
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/addBeneficiaryFab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="16dp"
+        app:tint="@android:color/white"
+        app:backgroundTint="@color/black"
+        app:srcCompat="@android:drawable/ic_input_add" />
+
+
 </LinearLayout>
