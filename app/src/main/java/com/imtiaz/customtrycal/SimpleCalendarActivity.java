@@ -1,14 +1,18 @@
 package com.imtiaz.customtrycal;
 
+import android.content.DialogInterface;
 import android.graphics.Color;
 import android.os.Bundle;
 
+import android.view.LayoutInflater;
 import android.view.MenuItem;
+import android.view.ViewGroup;
+import android.widget.PopupWindow;
 import android.widget.TextView;
 import android.widget.Toast;
 
 
-
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
@@ -81,14 +85,30 @@ public class SimpleCalendarActivity extends AppCompatActivity {
 
         // Call the method to color specific dates
         calendarView.setSpecificDatesColor(specificDates, Color.RED);
+        // Initialize PopupWindow
+
 
         //Handling custom calendar events
+        // Handling custom calendar events
         calendarView.setCalendarListener(new CalendarListener() {
             @Override
-            public void onDateSelected(Date date) {
+            public void onDateSelected(final Date date) {
                 if (!CalendarUtils.isPastDay(date)) {
+                    // Format the selected date
                     SimpleDateFormat df = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault());
-                    selectedDateTv.setText(String.format("Selected date is %s" , df.format(date)));
+                    String selectedDate = df.format(date);
+
+                    // Create and show an AlertDialog to display the selected date
+                    new AlertDialog.Builder(SimpleCalendarActivity.this)
+                            .setTitle("Selected Date")
+                            .setMessage("Selected date is " + selectedDate)
+                            .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialogInterface, int i) {
+                                    // Handle OK button click if needed
+                                }
+                            })
+                            .show();
                 } else {
                     selectedDateTv.setText("Selected date is disabled!");
                 }
